@@ -1,0 +1,19 @@
+ ServiceCard(
+            containerWidth: 123,
+            containerHeight: 50,
+            nameImage: 'taxi.jpg',
+            nameEng: 'Taxi'
+        ),
+        ServiceCard(
+            containerWidth: 123,
+            containerHeight: 50,
+            nameImage: 'taxi.jpg',
+            nameEng: 'Taxi'
+        ),
+        ServiceCard(
+            containerWidth: 123,
+            containerHeight: 50,
+            nameImage: 'taxi.jpg',
+            nameEng: 'Taxi'
+        ),
+          ),
