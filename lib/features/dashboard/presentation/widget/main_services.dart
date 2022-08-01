@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hajj_app/pages/HomePage/ServiceCard.dart';
+import 'service_card.dart';
 
 
 class MainServices extends StatefulWidget {

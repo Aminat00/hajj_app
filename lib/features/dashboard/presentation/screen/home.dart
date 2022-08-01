@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:hajj_app/pages/HomePage/CarouselSliderHajj.dart';
-import 'package:hajj_app/pages/HomePage/ExtraServices.dart';
-import 'package:hajj_app/pages/HomePage/MainServices.dart';
-import 'package:hajj_app/pages/HomePage/PrayerTimes.dart';
+import '../widget/carousel_slider_hajj.dart';
+import '../widget/extra_services.dart';
+import '../widget/main_services.dart';
+import '../widget/prayer_times.dart';
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
 
