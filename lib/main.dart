@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hajj_app/MainPage.dart';
+import '../features/dashboard/presentation/screen/main_page.dart';
 
 void main() {
   runApp(const MyApp());
