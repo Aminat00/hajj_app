@@ -15,16 +15,10 @@ class PrayerTimeIcon extends StatelessWidget {
     return Column(
       children: [
         Text(salahName,
-      style: const TextStyle(
-        fontSize: 15,
-        fontFamily: 'Righteous-Regular',
-      color: Colors.green)),
+      style:Theme.of(context).textTheme.bodyText2),
         Icon(salahIcon, color: Colors.green[500]),
         Text(salahTime,
-            style: const TextStyle(
-                fontSize: 15,
-                fontFamily: 'Righteous-Regular',
-                color: Colors.green)),
+            style: Theme.of(context).textTheme.bodyText2),
       ],
     );
   }

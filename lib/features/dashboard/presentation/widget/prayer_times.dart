@@ -15,7 +15,7 @@ class _PrayerTimesState extends State<PrayerTimes> {
     return ClipRRect(
       borderRadius: BorderRadius.circular(10.0),
       child: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: const EdgeInsets.all(10.0),
         child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: const [

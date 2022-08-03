@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AllDuas extends StatefulWidget {
-  const AllDuas({Key? key}) : super(key: key);
+class AllSupplications extends StatefulWidget {
+  const AllSupplications({Key? key}) : super(key: key);
 
   @override
-  State<AllDuas> createState() => _AllDuasState();
+  State<AllSupplications> createState() => _AllSupplicationsState();
 }
 
-class _AllDuasState extends State<AllDuas> {
+class _AllSupplicationsState extends State<AllSupplications> {
   final List<String> entries = <String>['A', 'B', 'C'];
   final List<int> colorCodes = <int>[600, 500, 100];
 

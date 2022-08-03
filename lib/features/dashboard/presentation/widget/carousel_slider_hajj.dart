@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:carousel_slider/carousel_options.dart';
-import 'package:carousel_slider/carousel_controller.dart';
 
 class CarouselSliderHajj extends StatefulWidget {
   const CarouselSliderHajj({Key? key}) : super(key: key);
@@ -23,10 +21,10 @@ class _CarouselSliderHajjState extends State<CarouselSliderHajj> {
     'assets/images/madeenah3.jpg',
   ];
 
-  final List<String> ayats =[
+  final List<String> verses =[
     'Quran [2:125]',
     'Quran [2:158]',
-    '۞ يَسْـَٔلُونَكَ عَنِ ٱلْأَهِلَّةِ ۖ قُلْ هِىَ مَوَٰقِيتُ لِلنَّاسِ وَٱلْحَجِّ ۗ وَلَيْسَ ٱلْبِرُّ بِأَن تَأْتُوا۟ ٱلْبُيُوتَ مِن ظُهُورِهَا وَلَـٰكِنَّ ٱلْبِرَّ مَنِ ٱتَّقَىٰ ۗ وَأْتُوا۟ ٱلْبُيُوتَ مِنْ أَبْوَٰبِهَا ۚ وَٱتَّقُوا۟ ٱللَّهَ لَعَلَّكُمْ تُفْلِحُونَ',
+    ' "Our Lord, give us in this world [that which is] good and in the Hereafter [that which is] good and protect us from the punishment of the Fire."َ',
     'Quran[2:197]',
     'Quran[2:198]',
     'Quran[2:200]',
@@ -40,10 +38,15 @@ class _CarouselSliderHajjState extends State<CarouselSliderHajj> {
       children:[
         Expanded(
 
-      child:Image.asset(element,
+      child:ColorFiltered(
+    colorFilter: const ColorFilter.mode(
+      Colors.black38,
+      BlendMode.colorBurn,
+    ),
+      child: Image.asset(element,
           height: 180,
           fit:BoxFit.fill),
-
+      ),
      ), ]
     )).toList();
 
@@ -60,24 +63,24 @@ class _CarouselSliderHajjState extends State<CarouselSliderHajj> {
     autoPlay: true,
     enlargeCenterPage: true,
     viewportFraction: 1.0,
-    aspectRatio: 26/14,
+    aspectRatio: 26/20,
     onPageChanged: (index,other){
     setState((){
     _current=index;
     });
     }
     )),
-    AspectRatio(aspectRatio: 26/14,
+    AspectRatio(aspectRatio: 26/20,
     child: Center(
       child: Padding(
-    padding: EdgeInsets.all(10.0),
+    padding: const EdgeInsets.all(10.0),
         child:Text(
-          ayats[_current],
+          verses[_current],
           style: TextStyle(
               decoration: TextDecoration.none,
               fontFamily: 'Righteous-Regular',
               color:Colors.white,
-              fontSize: MediaQuery.of(context).size.width/25
+              fontSize: MediaQuery.of(context).size.width/15
           ),
         ),
     )

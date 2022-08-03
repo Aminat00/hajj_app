@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../widget/carousel_slider_hajj.dart';
-import '../widget/extra_services.dart';
 import '../widget/main_services.dart';
 import '../widget/prayer_times.dart';
 class Home extends StatefulWidget {
@@ -16,29 +15,23 @@ class _HomeState extends State<Home> {
     return Container(
       color:Colors.white,
       child: Column(
-      children:const[
-        CarouselSliderHajj(),
-        PrayerTimes(),
+      children: [
+        const CarouselSliderHajj(),
+        const PrayerTimes(),
         Padding(
-            padding:  EdgeInsets.only(top: 0.0,bottom: 5.0),
+            padding:  const EdgeInsets.only(top: 0.0,bottom: 5.0),
             child:
             Text('Main Services',
-              style: TextStyle(
-                fontSize: 20,
-                fontFamily: 'Righteous-Regular',
-              ),
+              style: Theme.of(context).textTheme.headline2,
             )),
-        MainServices(),
+        const MainServices(),
         Padding(
-            padding:  EdgeInsets.only(top: 10.0,bottom: 5.0),
+            padding:  const EdgeInsets.only(top: 10.0,bottom: 5.0),
           child:
           Text('Extra Services',
-              style: TextStyle(
-                  fontSize: 20,
-                  fontFamily: 'Righteous-Regular'
-              ),
+              style: Theme.of(context).textTheme.headline2,
         )),
-        Expanded(child: ExtraServices()),
+
         ]
       ),
     );

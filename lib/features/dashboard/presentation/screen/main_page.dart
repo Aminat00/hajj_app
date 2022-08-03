@@ -16,15 +16,12 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex=0;
-  String? _selectedItem;
-  String? _selectedRoute;
   bool show404 = false;
 
   static const List<Widget> _items =[
     Home(),
     Text('Index1: "Location"'),
     Text('Index2: "Tasks"'),
-    Text('Index3: "Social"'),
   ];
 
   void _onTap(int index)
@@ -38,20 +35,23 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
-
-        title: Text(widget.title),
+        backgroundColor: const Color(0x44000000),
+        elevation: 15,
+        title: Text(widget.title,
+        style: Theme.of(context).textTheme.headline2),
       ),
       body: IndexedStack(
             index:_selectedIndex,
             children:_items
         ),
 
-      bottomNavigationBar: ShowBottomNav(),
+      bottomNavigationBar: showBottomNav(),
     );
   }
 
-  Widget ShowBottomNav()
+  Widget showBottomNav()
   {
     return BottomNavigationBar(
       items: const [
@@ -67,13 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.task_alt),
-          label:'Amal',
-        ),
-        BottomNavigationBarItem(
-          icon:Icon(
-            Icons.forum,
-          ),
-          label:'Dua',
+          label:'Agenda',
         ),
       ],
       currentIndex: _selectedIndex,

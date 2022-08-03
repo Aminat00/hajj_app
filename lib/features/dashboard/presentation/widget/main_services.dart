@@ -15,14 +15,14 @@ class _MainServicesState extends State<MainServices> {
     return Row(
       children: const [
         ServiceCard(
-            containerWidth: 160,
-            containerHeight: 115,
+          imageWidth: 160,
+          imageHeight: 115,
             nameImage: 'dua.jpg',
             nameEng: 'Duas',
             ),
         ServiceCard(
-            containerWidth: 220,
-            containerHeight: 115,
+          imageWidth: 200,
+          imageHeight: 115,
             nameImage: 'hajj.webp',
             nameEng: 'Hajj',
             ),
