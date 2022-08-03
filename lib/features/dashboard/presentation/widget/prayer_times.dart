@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:hajj_app/pages/HomePage/PrayerTimeIcon.dart';
+import 'prayer_time_icon.dart';
 
 class PrayerTimes extends StatefulWidget {
 
