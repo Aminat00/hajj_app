@@ -35,10 +35,11 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      extendBodyBehindAppBar: true,
+      // extendBodyBehindAppBar: true,
       appBar: AppBar(
-        backgroundColor: const Color(0x44000000),
-        elevation: 15,
+        // backgroundColor: const Color(0x44000000),
+        backgroundColor: Colors.transparent,
+        elevation: 10,
         title: Text(widget.title,
         style: Theme.of(context).textTheme.headline2),
       ),

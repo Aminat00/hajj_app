@@ -10,9 +10,9 @@ class HajjAppTheme {
       color: Colors.black,
     ),
     headline1: GoogleFonts.righteous(
-      fontSize: 32.0,
+      fontSize: 28.0,
       fontWeight: FontWeight.bold,
-      color: Colors.black,
+      color: Colors.white,
     ),
     headline2: GoogleFonts.righteous(
       fontSize: 21.0,

@@ -29,25 +29,24 @@ class ServiceCard extends StatelessWidget {
           debugPrint('Card tapped.');
         },
         child: Stack(
+          alignment: Alignment.center,
           children:[
             ClipRRect(
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(20.0),
               child: ColorFiltered(
         colorFilter: const ColorFilter.mode(
         Colors.black38,
           BlendMode.colorBurn,
         ),
         child: Image.asset(imageAddress + nameImage,
-          height: imageWidth,
+          height: imageHeight,
           width: imageWidth,
           fit:BoxFit.cover,), ),),
-      AspectRatio(aspectRatio: 26/20,
-        child: Center (
-         child:Text(nameEng,
-           style: Theme.of(context).textTheme.headline2,
-         ),
-       ))
-           ],
+            Text(nameEng,
+            style: Theme.of(context).textTheme.headline1,
+            textAlign: TextAlign.center,
+          ),
+                   ],
 
     ),
       ));
