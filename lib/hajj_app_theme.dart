@@ -31,7 +31,7 @@ class HajjAppTheme {
     ),
     bodyText2: GoogleFonts.righteous(
       fontSize: 15,
-      color: Colors.green,
+      color: Colors.teal,
     ),
   );
 
@@ -89,7 +89,7 @@ class HajjAppTheme {
         backgroundColor: Colors.black,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.green,
+        selectedItemColor: Colors.teal,
       ),
       textTheme: lightTextTheme,
     );
@@ -105,10 +105,10 @@ class HajjAppTheme {
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.teal,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-        selectedItemColor: Colors.green,
+        selectedItemColor: Colors.teal,
       ),
       textTheme: darkTextTheme,
     );

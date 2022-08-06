@@ -12,22 +12,26 @@ class MainServices extends StatefulWidget {
 class _MainServicesState extends State<MainServices> {
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const [
-        ServiceCard(
-          imageWidth: 170,
-          imageHeight: 100,
-            nameImage: 'dua.jpg',
-            nameEng: 'Duas',
-            ),
-        ServiceCard(
-          imageWidth: 200,
-          imageHeight: 100,
-            nameImage: 'hajj.webp',
-            nameEng: 'Hajj',
-            ),
-              ],
-            );
+    return Column(
+      children:[
+    Row(
+    children: const [
+    ServiceCard(
+    imageWidth: 170,
+      imageHeight: 130,
+      nameImage: 'dua.jpg',
+      nameEng: 'Duas',
+    ),
+    ServiceCard(
+    imageWidth: 200,
+    imageHeight: 130,
+    nameImage: 'hajj.webp',
+    nameEng: 'Umrah',
+    ),
+    ],
+    ),
+        ]
+    );
 
   }
 }

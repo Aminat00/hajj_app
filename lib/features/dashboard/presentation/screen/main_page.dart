@@ -38,7 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // extendBodyBehindAppBar: true,
       appBar: AppBar(
         // backgroundColor: const Color(0x44000000),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.teal,
         elevation: 10,
         title: Text(widget.title,
         style: Theme.of(context).textTheme.headline2),
@@ -55,6 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget showBottomNav()
   {
     return BottomNavigationBar(
+      backgroundColor: const Color(0xFF8AD7C7),
       items: const [
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
@@ -72,8 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ],
       currentIndex: _selectedIndex,
-      selectedItemColor: Colors.green,
-      unselectedItemColor: Colors.grey,
+      selectedItemColor: Colors.teal,
+      unselectedItemColor: Colors.white,
       onTap: _onTap,
     );
   }

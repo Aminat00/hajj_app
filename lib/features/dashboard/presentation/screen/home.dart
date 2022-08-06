@@ -15,22 +15,17 @@ class _HomeState extends State<Home> {
     return Container(
       color:Colors.white,
       child: Column(
-      children: [
-        const CarouselSliderHajj(),
-        const PrayerTimes(),
+      children: const [
+        CarouselSliderHajj(),
+        PrayerTimes(),
         Padding(
-            padding:  const EdgeInsets.only(top: 0.0,bottom: 5.0),
-            child:
-            Text('Main Services',
-              style: Theme.of(context).textTheme.headline2,
-            )),
-        const MainServices(),
-        Padding(
-            padding:  const EdgeInsets.only(top: 10.0,bottom: 5.0),
-          child:
-          Text('Extra Services',
-              style: Theme.of(context).textTheme.headline2,
-        )),
+            padding:  EdgeInsets.only(top: 0.0,bottom: 5.0),
+            child:MainServices())
+            // Text('Main Services',
+            //   style: Theme.of(context).textTheme.headline2,
+            // )),
+        ,
+
 
         ]
       ),

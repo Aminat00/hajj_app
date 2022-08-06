@@ -22,6 +22,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const  MyHomePage(title: 'Hajj Demo page'),
         '/homepage': (context) => const  MyHomePage(title: 'Hajj Demo page'),
         '/dashboard': (context) => const  MyHomePage(title: 'Hajj Demo page'),
+        '/supplications': (context) => const  MyHomePage(title: 'Hajj Demo page'),
+        '/howtodo': (context) => const  MyHomePage(title: 'Hajj Demo page'),
       },
 
     );

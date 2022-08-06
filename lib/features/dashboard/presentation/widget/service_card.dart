@@ -23,14 +23,16 @@ class ServiceCard extends StatelessWidget {
     String imageAddress = "assets/images/";
     return Card(
       margin: const EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0),
-      child: InkWell(
-        splashColor: Colors.blue,
-        onTap: () {
-          debugPrint('Card tapped.');
-        },
+
         child: Stack(
           alignment: Alignment.center,
           children:[
+         InkWell(
+        splashColor: Colors.blue,
+          onTap: () {
+            debugPrint('Card tapped.');
+          },
+          child:
             ClipRRect(
               borderRadius: BorderRadius.circular(20.0),
               child: ColorFiltered(
@@ -41,7 +43,7 @@ class ServiceCard extends StatelessWidget {
         child: Image.asset(imageAddress + nameImage,
           height: imageHeight,
           width: imageWidth,
-          fit:BoxFit.cover,), ),),
+          fit:BoxFit.cover,), ),),),
             Text(nameEng,
             style: Theme.of(context).textTheme.headline1,
             textAlign: TextAlign.center,
@@ -49,6 +51,6 @@ class ServiceCard extends StatelessWidget {
                    ],
 
     ),
-      ));
+      );
   }
 }

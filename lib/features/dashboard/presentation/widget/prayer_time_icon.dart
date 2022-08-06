@@ -16,7 +16,7 @@ class PrayerTimeIcon extends StatelessWidget {
       children: [
         Text(salahName,
       style:Theme.of(context).textTheme.bodyText2),
-        Icon(salahIcon, color: Colors.green[500]),
+        Icon(salahIcon, color: Colors.teal[500]),
         Text(salahTime,
             style: Theme.of(context).textTheme.bodyText2),
       ],
