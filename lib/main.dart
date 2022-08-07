@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hajj_app/hajj_app_theme.dart';
 import '../features/dashboard/presentation/screen/main_page.dart';
 
 void main() {
@@ -11,18 +12,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    final theme = HajjAppTheme.light();
     return MaterialApp(
       title: 'Hajj Application',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: const Navigator(
-        pages:[
-          MaterialPage(child:  MyHomePage(title: 'Hajj Demo page'),)
-        ],
-        // onPopPage: (route,result)=> route.didPop(result),
-      )
+      theme: theme,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const  MyHomePage(title: 'Hajj Demo page'),
+        '/homepage': (context) => const  MyHomePage(title: 'Hajj Demo page'),
+        '/dashboard': (context) => const  MyHomePage(title: 'Hajj Demo page'),
+        '/supplications': (context) => const  MyHomePage(title: 'Hajj Demo page'),
+        '/howtodo': (context) => const  MyHomePage(title: 'Hajj Demo page'),
+      },
 
     );
   }
