@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:hajj_app/hajj_app_theme.dart';
 import '../features/dashboard/presentation/screen/main_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+
+Future<void> main() async {
+  await Firebase.initializeApp();
   runApp(const MyApp());
+
 }
 
 class MyApp extends StatelessWidget {
