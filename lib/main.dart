@@ -11,15 +11,15 @@ import 'features/dashboard/presentation/screen/process.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-   await Firebase.initializeApp(
-     options: DefaultFirebaseOptions.currentPlatform,);
+   // await Firebase.initializeApp(
+   //   options: DefaultFirebaseOptions.currentPlatform,);
   runApp( MyApp());
 
 }
 
 class MyApp extends StatelessWidget {
-  // final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
-   // MyApp({Key? key}) : super(key: key);
+   final Future<FirebaseApp> _fbApp = Firebase.initializeApp();
+   MyApp({Key? key}) : super(key: key);
 
   // This widget is the root of your application.
   @override
