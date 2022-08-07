@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>80986699837-bt81g7po4dl87gqdc61f29n24r33c3j8.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.80986699837-bt81g7po4dl87gqdc61f29n24r33c3j8</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB6boLZ7RwIFpCD741t0Y1W2-IvtjULT_A</string>
+	<key>GCM_SENDER_ID</key>
+	<string>80986699837</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.hajjApp</string>
+	<key>PROJECT_ID</key>
+	<string>tawaf-9d0c4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>tawaf-9d0c4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:80986699837:ios:7b3d3cb73cdf7150735254</string>
+</dict>
+</plist>
