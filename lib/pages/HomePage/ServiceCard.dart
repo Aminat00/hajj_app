@@ -21,7 +21,7 @@ class ServiceCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0),
+      margin: const EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0),
       child: InkWell(
         splashColor: Colors.blue,
         onTap: () {
@@ -34,7 +34,7 @@ class ServiceCard extends StatelessWidget {
               borderRadius: BorderRadius.circular(15.0),
               image:  DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage('assets/images/'+ nameImage))),
+                  image: AssetImage('assets/images/$nameImage'))),
           child: Center(
               child: Text(nameEng,
                      style: const TextStyle(
