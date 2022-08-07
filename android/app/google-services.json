@@ -29,6 +29,13 @@
             {
               "client_id": "80986699837-2ic6lvkulie68p0lh79uhl81bn48fr30.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "80986699837-bt81g7po4dl87gqdc61f29n24r33c3j8.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.hajjApp"
+              }
             }
           ]
         }
