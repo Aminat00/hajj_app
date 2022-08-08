@@ -24,7 +24,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Sign Up Page', style:TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        title: const Text('Sign Up Page',
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            )),
       ),
       body: Container(
           width: MediaQuery.of(context).size.width,
@@ -33,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               gradient: LinearGradient(colors: [
             hexToColor('99d5d5'),
             hexToColor('4cb6b6'),
-            hexToColor('009797')
+            hexToColor('009797'),
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           child: Center(
             child: SingleChildScrollView(
@@ -61,13 +65,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       height: 20,
                     ),
                     signInSignUpButton(context, false, () {
-                      FirebaseAuth.instance.createUserWithEmailAndPassword(email: _emailTextController.text,
-                          password: _passwordTextController.text).then((value) {
+                      FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: _emailTextController.text,
+                              password: _passwordTextController.text)
+                          .then((value) {
+                        FirebaseAuth.instance.currentUser
+                            ?.updateDisplayName(_userTextController.text);
                         Navigator.pop(context);
-                      }).onError((error, stackTrace){
+                      }).onError((error, stackTrace) {
                         print("Error ${error.toString()}");
                       });
-
                     })
                   ],
                 ),

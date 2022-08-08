@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hajj_app/features/dashboard/presentation/screen/signin_screen.dart';
 
@@ -30,27 +31,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // extendBodyBehindAppBar: true,
+      endDrawer: _drawer(context),
       appBar: AppBar(
-        // backgroundColor: const Color(0x44000000),
         backgroundColor: Colors.teal,
         elevation: 10,
         title: Text(widget.title, style: Theme.of(context).textTheme.headline2),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SignInScreen(),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.account_circle_outlined, color: Colors.white,)),
-        ],
       ),
       body: IndexedStack(index: _selectedIndex, children: _items),
-
       bottomNavigationBar: showBottomNav(),
     );
   }
@@ -79,5 +66,62 @@ class _MyHomePageState extends State<MyHomePage> {
       unselectedItemColor: Colors.white,
       onTap: _onTap,
     );
+  }
+
+  _drawer(BuildContext context) {
+    return Drawer(
+      width: 200,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(30, 60, 30, 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: _drawerContent(context),
+        ),
+      ),
+    );
+  }
+
+  _drawerContent(BuildContext context) {
+    bool isLoggedIn = FirebaseAuth.instance.currentUser != null;
+    User? currentUser;
+    if (isLoggedIn) {
+      currentUser = FirebaseAuth.instance.currentUser;
+    }
+
+    if (!isLoggedIn) {
+      return [
+        ListTile(
+          leading: const Icon(Icons.account_circle_outlined),
+          title: const Text('Log in'),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const SignInScreen(),
+            ),
+          ).then((value) => setState(() {})),
+        ),
+      ];
+    } else {
+      return [
+        Text(currentUser?.displayName ?? ''),
+        const SizedBox(height: 10),
+        Text(currentUser?.email ?? ''),
+        const SizedBox(height: 10),
+        Divider(
+          thickness: 2,
+        ),
+        const Expanded(
+          child: SizedBox(),
+        ),
+        ListTile(
+          leading: const Icon(Icons.exit_to_app_outlined),
+          title: const Text('Log out'),
+          onTap: () async {
+            await FirebaseAuth.instance.signOut();
+            setState(() {});
+          },
+        ),
+      ];
+    }
   }
 }
