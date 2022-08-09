@@ -7,50 +7,61 @@ class ServiceCard extends StatelessWidget {
   final String nameEng;
   final String? nameAr;
   final String? centeredText;
-  const ServiceCard(
-      {Key? key,
-        required this.imageWidth,
-        required this.imageHeight,
-        required this.nameImage,
-        required this.nameEng,
-        this.nameAr,
-        this.centeredText,
-      })
-      : super(key: key);
+
+  const ServiceCard({
+    Key? key,
+    required this.imageWidth,
+    required this.imageHeight,
+    required this.nameImage,
+    required this.nameEng,
+    this.nameAr,
+    this.centeredText,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     String imageAddress = "assets/images/";
     return Card(
       margin: const EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0),
-
-        child: Stack(
-          alignment: Alignment.center,
-          children:[
-         InkWell(
-        splashColor: Colors.blue,
-          onTap: () {
-            debugPrint('Card tapped.');
-          },
-          child:
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: ColorFiltered(
-        colorFilter: const ColorFilter.mode(
-        Colors.black38,
-          BlendMode.colorBurn,
-        ),
-        child: Image.asset(imageAddress + nameImage,
-          height: imageHeight,
-          width: imageWidth,
-          fit:BoxFit.cover,), ),),),
-            Text(nameEng,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20.0),
+            child: ColorFiltered(
+              colorFilter: const ColorFilter.mode(
+                Colors.black38,
+                BlendMode.colorBurn,
+              ),
+              child: Image.asset(
+                imageAddress + nameImage,
+                height: imageHeight,
+                width: imageWidth,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          Text(
+            nameEng,
             style: Theme.of(context).textTheme.headline1,
             textAlign: TextAlign.center,
           ),
-                   ],
-
-    ),
-      );
+          Positioned.fill(
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: Material(
+                color: Colors.transparent,
+                child: InkWell(
+                  splashColor: Colors.teal.withAlpha(128),
+                  onTap: () {
+                    debugPrint('Card tapped.');
+                  },
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
