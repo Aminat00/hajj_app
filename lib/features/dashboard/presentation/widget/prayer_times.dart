@@ -45,6 +45,7 @@ class _PrayerTimesState extends State<PrayerTimes> {
     DateFormat dateFormat = DateFormat("H:mm");
     final Prayers prayers = pair.item1 as Prayers;
     final HijriDate hijriDate = pair.item2 as HijriDate;
+    final closestPrayer = _determineClosest(prayers);
     return Column(
       children: [
         Padding(
@@ -57,33 +58,67 @@ class _PrayerTimesState extends State<PrayerTimes> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               PrayerTimeIcon(
-                  salahName: 'Fajr',
-                  salahIcon: Icons.brightness_4,
-                  salahTime: dateFormat.format(prayers.Fajr.toLocal())),
+                salahName: 'Fajr',
+                salahIcon: Icons.brightness_4,
+                salahTime: dateFormat.format(prayers.Fajr.toLocal()),
+                closest: prayers.Fajr == closestPrayer,
+              ),
               PrayerTimeIcon(
-                  salahName: 'Sunrise',
-                  salahIcon: Icons.brightness_5,
-                  salahTime: dateFormat.format(prayers.Sunrise.toLocal())),
+                salahName: 'Sunrise',
+                salahIcon: Icons.brightness_5,
+                salahTime: dateFormat.format(prayers.Sunrise.toLocal()),
+                closest: prayers.Sunrise == closestPrayer,
+              ),
               PrayerTimeIcon(
-                  salahName: 'Dhuhr',
-                  salahIcon: Icons.wb_sunny,
-                  salahTime: dateFormat.format(prayers.Dhuhr.toLocal())),
+                salahName: 'Dhuhr',
+                salahIcon: Icons.wb_sunny,
+                salahTime: dateFormat.format(prayers.Dhuhr.toLocal()),
+                closest: prayers.Dhuhr == closestPrayer,
+              ),
               PrayerTimeIcon(
-                  salahName: 'Asr',
-                  salahIcon: Icons.wb_twilight,
-                  salahTime: dateFormat.format(prayers.Asr.toLocal())),
+                salahName: 'Asr',
+                salahIcon: Icons.wb_twilight,
+                salahTime: dateFormat.format(prayers.Asr.toLocal()),
+                closest: prayers.Asr == closestPrayer,
+              ),
               PrayerTimeIcon(
-                  salahName: 'Maghrib',
-                  salahIcon: Icons.wb_twighlight,
-                  salahTime: dateFormat.format(prayers.Maghrib.toLocal())),
+                salahName: 'Maghrib',
+                salahIcon: Icons.wb_twighlight,
+                salahTime: dateFormat.format(prayers.Maghrib.toLocal()),
+                closest: prayers.Maghrib == closestPrayer,
+              ),
               PrayerTimeIcon(
-                  salahName: 'Isha',
-                  salahIcon: Icons.bedtime,
-                  salahTime: dateFormat.format(prayers.Isha.toLocal())),
+                salahName: 'Isha',
+                salahIcon: Icons.bedtime,
+                salahTime: dateFormat.format(prayers.Isha.toLocal()),
+                closest: prayers.Isha == closestPrayer,
+              ),
             ],
           ),
         ),
       ],
     );
+  }
+
+  _determineClosest(Prayers prayers) {
+    final List<DateTime> prayersList = [
+      prayers.Fajr,
+      prayers.Sunrise,
+      prayers.Dhuhr,
+      prayers.Asr,
+      prayers.Maghrib,
+      prayers.Isha,
+    ];
+
+    final now = DateTime.now();
+    DateTime? closetsPrayerToNow;
+    prayersList.removeWhere((prayer) => prayer.isBefore(now));
+
+    if (prayersList.isNotEmpty) {
+      closetsPrayerToNow =
+          prayersList.reduce((a, b) => a.difference(now).abs() < b.difference(now).abs() ? a : b);
+    }
+
+    return closetsPrayerToNow;
   }
 }
