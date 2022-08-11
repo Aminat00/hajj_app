@@ -15,7 +15,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        color: Colors.white,
         child: Column(children: const [
           CarouselSliderHajj(),
           PrayerTimes(),
