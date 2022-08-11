@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hajj_app/features/dashboard/presentation/screen/duas_screen.dart';
 import 'service_card.dart';
 
 class MainServices extends StatefulWidget {
@@ -13,12 +14,18 @@ class _MainServicesState extends State<MainServices> {
   Widget build(BuildContext context) {
     return Column(children: [
       Row(
-        children: const [
+        children: [
           ServiceCard(
             imageWidth: 170,
             imageHeight: 130,
             nameImage: 'dua.jpg',
             nameEng: 'Duas',
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const DuasScreen(),
+              ),
+            ),
           ),
           ServiceCard(
             imageWidth: 200,

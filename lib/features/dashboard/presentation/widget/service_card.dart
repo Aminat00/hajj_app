@@ -7,6 +7,7 @@ class ServiceCard extends StatelessWidget {
   final String nameEng;
   final String? nameAr;
   final String? centeredText;
+  final Function()? onTap;
 
   const ServiceCard({
     Key? key,
@@ -16,6 +17,7 @@ class ServiceCard extends StatelessWidget {
     required this.nameEng,
     this.nameAr,
     this.centeredText,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -53,9 +55,7 @@ class ServiceCard extends StatelessWidget {
                 color: Colors.transparent,
                 child: InkWell(
                   splashColor: Colors.teal.withAlpha(128),
-                  onTap: () {
-                    debugPrint('Card tapped.');
-                  },
+                  onTap: () => onTap?.call(),
                 ),
               ),
             ),
