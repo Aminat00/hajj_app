@@ -27,11 +27,17 @@ class _MainServicesState extends State<MainServices> {
               ),
             ),
           ),
-          ServiceCard(
+           ServiceCard(
             imageWidth: 200,
             imageHeight: 130,
             nameImage: 'hajj.webp',
             nameEng: 'Umrah',
+            onTap:() => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const DuasScreen(),
+              ),
+            ), 
           ),
         ],
       ),

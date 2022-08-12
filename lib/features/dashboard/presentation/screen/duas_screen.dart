@@ -28,7 +28,7 @@ class _DuasScreenState extends State<DuasScreen> {
         elevation: 0,
         backgroundColor: Colors.transparent,
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Duas',
           style: TextStyle(color: Colors.teal),
         ),
@@ -41,7 +41,7 @@ class _DuasScreenState extends State<DuasScreen> {
               child: ListTile(
                 tileColor: Colors.white,
                 trailing: Icon(Icons.search_outlined),
-                title: Text(
+                title: const Text(
                   'Search',
                   style: TextStyle(color: Colors.grey),
                 ),

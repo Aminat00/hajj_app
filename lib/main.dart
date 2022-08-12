@@ -7,7 +7,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'dart:async';
 
-import 'features/dashboard/presentation/screen/process.dart';
+import 'features/dashboard/presentation/screen/umrah_screen.dart';
 
 
 Future<void> main() async {
@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         '/homepage': (context) => const  MyHomePage(),
         '/dashboard': (context) => const  MyHomePage(),
         '/supplications': (context) => const Supplications(),
-        '/howtodo': (context) => const  Process(),
+        '/howtodo': (context) => const  UmrahScreen(),
         '/signin': (context) => const  SignInScreen(),
 
       },
