@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hajj_app/features/dashboard/presentation/screen/places_screen.dart';
 import 'package:hajj_app/features/dashboard/presentation/screen/signin_screen.dart';
 
 import 'home.dart';
@@ -19,7 +20,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   static const List<Widget> _items = [
     Home(),
-    Text('Index2: "Tasks"'),
+    PlacesScreen(),
     Text('Index2: "Tasks"'),
   ];
 
