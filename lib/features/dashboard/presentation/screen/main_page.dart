@@ -1,7 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:hajj_app/features/dashboard/presentation/other/task_sheet.dart';
+import 'package:hajj_app/features/dashboard/presentation/screen/agenda_screen.dart';
 import 'package:hajj_app/features/dashboard/presentation/screen/places_screen.dart';
 import 'package:hajj_app/features/dashboard/presentation/screen/signin_screen.dart';
+import 'package:hajj_app/models/agenda_task.dart';
+import 'package:hajj_app/services/user_service.dart';
 
 import 'home.dart';
 
@@ -18,16 +22,22 @@ class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
   bool show404 = false;
 
-  static const List<Widget> _items = [
-    Home(),
-    PlacesScreen(),
-    Text('Index2: "Tasks"'),
-  ];
+  // static const List<Widget> _items = [
+  //   Home(),
+  //   PlacesScreen(),
+  //   AgendaScreen(
+  //     callback: () {
+  //       setState(() {});
+  //     },
+  //   ),
+  // ];
 
   void _onTap(int index) {
     _selectedIndex = index;
     setState(() {});
   }
+
+  bool get showFab => FirebaseAuth.instance.currentUser != null && _selectedIndex == 2;
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +49,34 @@ class _MyHomePageState extends State<MyHomePage> {
         elevation: 10,
         title: Text(widget.title, style: Theme.of(context).textTheme.headline2),
       ),
-      body: IndexedStack(index: _selectedIndex, children: _items),
+      body: IndexedStack(
+        index: _selectedIndex,
+        children: [
+          const Home(),
+          const PlacesScreen(),
+          AgendaScreen(
+            callback: () {
+              setState(() {});
+            },
+          ),
+        ],
+      ),
+      floatingActionButton: showFab
+          ? FloatingActionButton(
+              backgroundColor: Colors.teal,
+              onPressed: () {
+                TaskSheet.show(context, (header, body) {
+                  Navigator.pop(context);
+                  UserService.addTask(FirebaseAuth.instance.currentUser!.uid, header, body);
+                  AgendaScreen.globalKey.currentState!.refresh();
+                });
+              },
+              child: const Icon(
+                Icons.add,
+                size: 36,
+              ),
+            )
+          : null,
       bottomNavigationBar: showBottomNav(),
     );
   }
