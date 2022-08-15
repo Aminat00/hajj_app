@@ -15,10 +15,9 @@ class AgendaScreen extends StatefulWidget {
 }
 
 class _AgendaScreenState extends State<AgendaScreen> {
-  User? user = FirebaseAuth.instance.currentUser;
-
-  bool get isLoggedIn => user != null;
+  bool get isLoggedIn => user.value != null;
   late Future<List<AgendaTask>?> _futureAgenda;
+  final ValueNotifier<User?> user = ValueNotifier(FirebaseAuth.instance.currentUser);
 
   @override
   void didChangeDependencies() {
@@ -28,14 +27,18 @@ class _AgendaScreenState extends State<AgendaScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return isLoggedIn ? _agendaList() : _notLoggedWidget();
+    return ValueListenableBuilder<User?>(
+        valueListenable: user,
+        builder: (context, user, _) {
+          return user != null ? _agendaList() : _notLoggedWidget();
+        });
   }
 
-  refresh() async {
+  refresh() {
+    user.value = FirebaseAuth.instance.currentUser;
     if (isLoggedIn) {
-      user = FirebaseAuth.instance.currentUser;
       _futureAgenda = Future(() => null);
-      _futureAgenda = UserService.fetchAgenda(user!.uid);
+      _futureAgenda = UserService.fetchAgenda(user.value!.uid);
     }
     setState(() {});
   }
@@ -69,7 +72,8 @@ class _AgendaScreenState extends State<AgendaScreen> {
               return _taskTile(
                 onDismiss: (direction) {
                   setState(() {
-                    UserService.removeTask(user!.uid, originalResponse.indexOf(response[index]));
+                    UserService.removeTask(
+                        user.value!.uid, originalResponse.indexOf(response[index]));
                     response.removeAt(index);
                     refresh();
                   });
@@ -77,7 +81,7 @@ class _AgendaScreenState extends State<AgendaScreen> {
                 onDone: (value) {
                   response[index].done = !response[index].done;
                   UserService.updateTask(
-                    userId: user!.uid,
+                    userId: user.value!.uid,
                     index: originalResponse.indexOf(response[index]),
                     task: response[index],
                   );
@@ -86,7 +90,7 @@ class _AgendaScreenState extends State<AgendaScreen> {
                 onFavourite: () {
                   response[index].favourite = !response[index].favourite;
                   UserService.updateTask(
-                    userId: user!.uid,
+                    userId: user.value!.uid,
                     index: originalResponse.indexOf(response[index]),
                     task: response[index],
                   );
@@ -128,6 +132,7 @@ class _AgendaScreenState extends State<AgendaScreen> {
               refresh();
               widget.callback?.call();
               setState(() {});
+              AgendaScreen.globalKey.currentState!.refresh();
             });
           },
           child: const Padding(

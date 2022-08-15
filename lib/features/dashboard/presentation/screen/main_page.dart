@@ -132,12 +132,17 @@ class _MyHomePageState extends State<MyHomePage> {
         ListTile(
           leading: const Icon(Icons.account_circle_outlined),
           title: const Text('Log in'),
-          onTap: () => Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const SignInScreen(),
-            ),
-          ).then((value) => setState(() {})),
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SignInScreen(),
+              ),
+            ).then((value) {
+              setState(() {});
+              AgendaScreen.globalKey.currentState!.refresh();
+            });
+          },
         ),
       ];
     } else {
@@ -158,6 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
           onTap: () async {
             await FirebaseAuth.instance.signOut();
             setState(() {});
+            AgendaScreen.globalKey.currentState!.refresh();
           },
         ),
       ];
