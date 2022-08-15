@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:hajj_app/features/dashboard/presentation/screen/duas_screen.dart';
 import 'package:hajj_app/features/dashboard/presentation/screen/signin_screen.dart';
-import 'package:hajj_app/features/dashboard/presentation/screen/supplications.dart';
 import 'package:hajj_app/hajj_app_theme.dart';
 import '../features/dashboard/presentation/screen/main_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -35,7 +35,7 @@ class MyApp extends StatelessWidget {
         '/': (context) => const  MyHomePage(),
         '/homepage': (context) => const  MyHomePage(),
         '/dashboard': (context) => const  MyHomePage(),
-        '/supplications': (context) => const Supplications(),
+        '/duas': (context) => const DuasScreen(),
         '/howtodo': (context) => const  UmrahScreen(),
         '/signin': (context) => const  SignInScreen(),
 

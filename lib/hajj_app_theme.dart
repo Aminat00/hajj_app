@@ -6,13 +6,13 @@ class HajjAppTheme {
   static TextTheme lightTextTheme = TextTheme(
     bodyText1: GoogleFonts.righteous(
       fontSize: 14.0,
-      fontWeight: FontWeight.w700,
+      fontWeight: FontWeight.w500,
       color: Colors.black,
     ),
     headline1: GoogleFonts.righteous(
       fontSize: 28.0,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
+      fontWeight: FontWeight.w500,
+      color: Colors.teal,
     ),
     headline2: GoogleFonts.righteous(
       fontSize: 21.0,
@@ -20,18 +20,24 @@ class HajjAppTheme {
       color: Colors.white,
     ),
     headline3: GoogleFonts.righteous(
-      fontSize: 16.0,
+      fontSize: 22.0,
+      fontWeight: FontWeight.w500,
+      color: Colors.black87,
+    ),
+    headline5: GoogleFonts.righteous(
+      fontSize: 26.0,
       fontWeight: FontWeight.w600,
-      color: Colors.black,
+      color: Colors.teal,
     ),
     headline6: GoogleFonts.righteous(
-      fontSize: 20.0,
+      fontSize: 22.0,
       fontWeight: FontWeight.w600,
-      color: Colors.black,
+      color: Colors.teal,
     ),
     bodyText2: GoogleFonts.righteous(
-      fontSize: 15,
-      color: Colors.teal,
+      fontSize: 14,
+      color: Colors.black45,
+      fontWeight: FontWeight.w300,
     ),
   );
 

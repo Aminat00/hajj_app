@@ -25,6 +25,9 @@ class ServiceCard extends StatelessWidget {
     String imageAddress = "assets/images/";
     return Card(
       margin: const EdgeInsets.only(left: 5.0, right: 5.0, top: 5.0),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
       child: Stack(
         alignment: Alignment.center,
         children: [
@@ -45,7 +48,7 @@ class ServiceCard extends StatelessWidget {
           ),
           Text(
             nameEng,
-            style: Theme.of(context).textTheme.headline1,
+            style: Theme.of(context).textTheme.headline2,
             textAlign: TextAlign.center,
           ),
           Positioned.fill(

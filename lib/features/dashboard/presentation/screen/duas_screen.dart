@@ -23,7 +23,7 @@ class _DuasScreenState extends State<DuasScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromRGBO(243, 237, 229, 1),
+      backgroundColor: const Color.fromRGBO(243, 237, 229, 1),
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -40,7 +40,7 @@ class _DuasScreenState extends State<DuasScreen> {
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 tileColor: Colors.white,
-                trailing: Icon(Icons.search_outlined),
+                trailing: const Icon(Icons.search_outlined),
                 title: const Text(
                   'Search',
                   style: TextStyle(color: Colors.grey),
@@ -54,7 +54,7 @@ class _DuasScreenState extends State<DuasScreen> {
               future: _futureDuas,
               builder: (context, snapshot) {
                 if (snapshot.hasError) {
-                  return Text("Error fetching duas: ${snapshot.error.toString()}");
+                  return Text("Error fetching duas : ${snapshot.error.toString()}");
                 } else if (snapshot.hasData) {
                   if (snapshot.data is List<Dua>) {
                     return _duas(snapshot.data as List<Dua>);
@@ -73,15 +73,13 @@ class _DuasScreenState extends State<DuasScreen> {
   }
 
   _duas(List<Dua> duas) {
-    return Container(
-      child: ListView.builder(
-        physics: NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
-        itemCount: duas.length,
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.all(6.0),
-          child: _duaTile(duas[index], index),
-        ),
+    return ListView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      itemCount: duas.length,
+      itemBuilder: (context, index) => Padding(
+        padding: const EdgeInsets.all(6.0),
+        child: _duaTile(duas[index], index),
       ),
     );
   }
@@ -103,7 +101,7 @@ class _DuasScreenState extends State<DuasScreen> {
                 child: Container(
                   height: 30,
                   width: 30,
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     shape: BoxShape.circle,
                     color: Colors.teal,
                   ),
@@ -151,10 +149,10 @@ class _DuasScreenState extends State<DuasScreen> {
                 ),
               ),
             ),
-            Flexible(
+            const Flexible(
               flex: 1,
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(8.0),
                 child: Icon(
                   Icons.favorite_border_outlined,
                   color: Colors.teal,

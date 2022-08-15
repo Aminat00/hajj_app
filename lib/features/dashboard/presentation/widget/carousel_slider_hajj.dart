@@ -13,12 +13,12 @@ class _CarouselSliderHajjState extends State<CarouselSliderHajj> {
   CarouselController buttonCarouselController = CarouselController();
 
   final List<String> images = [
-    'assets/images/makkah1.jpg',
+    'assets/images/makkah2.jpg',
     'assets/images/makkah2.jpg',
     'assets/images/makkah3.jpg',
-    'assets/images/madeenah1.jpg',
-    'assets/images/madeenah2.jpg',
-    'assets/images/madeenah3.jpg',
+    'assets/images/makkah2.jpg',
+    'assets/images/makkah2.jpg',
+    'assets/images/makkah2.jpg',
   ];
 
   final List<String> verses =[
@@ -37,16 +37,15 @@ class _CarouselSliderHajjState extends State<CarouselSliderHajj> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
       children:[
         Expanded(
-
-      child:ColorFiltered(
-    colorFilter: const ColorFilter.mode(
-      Colors.black38,
-      BlendMode.colorBurn,
-    ),
-      child: Image.asset(element,
+    //       child:ColorFiltered(
+    // colorFilter: const ColorFilter.mode(
+    //   Colors.black38,
+    //   BlendMode.colorBurn,
+    // ),
+   child:
+      Image.asset(element,
           height: 180,
-          fit:BoxFit.fill),
-      ),
+          fit:BoxFit.cover),
      ), ]
     )).toList();
 
@@ -61,34 +60,34 @@ class _CarouselSliderHajjState extends State<CarouselSliderHajj> {
         items: generateImageTiles(),
     options: CarouselOptions(
     autoPlay: true,
-        autoPlayInterval: const Duration(seconds: 15),
+        autoPlayInterval: const Duration(seconds: 3),
         autoPlayAnimationDuration: const Duration(milliseconds: 900),
         autoPlayCurve: Curves.easeInOutBack,
     enlargeCenterPage: true,
     viewportFraction: 1.0,
-    aspectRatio: 33/28,
+    aspectRatio: 20/16,
     onPageChanged: (index,other){
     setState((){
     _current=index;
     });
     }
     )),
-    AspectRatio(aspectRatio: 33/28,
-    child: Center(
-      child: Padding(
-    padding: const EdgeInsets.all(10.0),
-        child:Text(
-          verses[_current],
-          style: TextStyle(
-              decoration: TextDecoration.none,
-              fontFamily: 'Righteous-Regular',
-              color:Colors.white,
-              fontSize: MediaQuery.of(context).size.width/20
-          ),
-        ),
-    )
-      
-    ))
+    // AspectRatio(aspectRatio: 26/22,
+    // child: Center(
+    //   child: Padding(
+    // padding: const EdgeInsets.fromLTRB(10.0,15.0, 10.0,15.0),
+    //     child:Text(
+    //       verses[_current],
+    //       style: TextStyle(
+    //           decoration: TextDecoration.none,
+    //           fontFamily: 'Righteous-Regular',
+    //           color:Colors.white,
+    //           fontSize: MediaQuery.of(context).size.width/25
+    //       ),
+    //     ),
+    // )
+    //
+    // ))
 
       ],
 

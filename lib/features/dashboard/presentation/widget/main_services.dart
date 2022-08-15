@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:hajj_app/features/dashboard/presentation/screen/duas_screen.dart';
+import 'package:hajj_app/features/dashboard/presentation/screen/umrah_screen.dart';
 import 'service_card.dart';
 
 class MainServices extends StatefulWidget {
@@ -12,12 +13,25 @@ class MainServices extends StatefulWidget {
 class _MainServicesState extends State<MainServices> {
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Row(
+    return Column(
+
         children: [
+
+           ServiceCard(
+            imageWidth: double.infinity,
+            imageHeight: 95,
+            nameImage: 'hajj.webp',
+            nameEng: 'Umrah',
+            onTap:() => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const UmrahScreen(),
+              ),
+            ), 
+          ),
           ServiceCard(
-            imageWidth: 170,
-            imageHeight: 130,
+            imageWidth: double.infinity,
+            imageHeight: 95,
             nameImage: 'dua.jpg',
             nameEng: 'Duas',
             onTap: () => Navigator.push(
@@ -27,20 +41,7 @@ class _MainServicesState extends State<MainServices> {
               ),
             ),
           ),
-           ServiceCard(
-            imageWidth: 200,
-            imageHeight: 130,
-            nameImage: 'hajj.webp',
-            nameEng: 'Umrah',
-            onTap:() => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const DuasScreen(),
-              ),
-            ), 
-          ),
-        ],
-      ),
-    ]);
+    ]
+      );
   }
 }

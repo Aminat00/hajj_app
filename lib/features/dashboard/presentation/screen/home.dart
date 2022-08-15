@@ -15,13 +15,16 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        child: Column(children: const [
+        child: Column(
+
+            children:  [
           CarouselSliderHajj(),
           PrayerTimes(),
           Padding(
             padding: EdgeInsets.only(top: 0.0, bottom: 5.0),
-            child: MainServices(),
-          ),
+
+                child: MainServices()),
+
         ]),
       ),
     );

@@ -11,8 +11,8 @@ class QuranService {
   static Future<List<Dua>> fetchDuas() async {
     List<Dua> duasList = [];
     final ref = FirebaseDatabase.instanceFor(
-            app: Firebase.app(),
-            databaseURL: 'https://tawaf-9d0c4-default-rtdb.europe-west1.firebasedatabase.app')
+              app: Firebase.app(),
+              databaseURL: 'https://tawaf-9d0c4-default-rtdb.europe-west1.firebasedatabase.app')
         .ref();
     final snapshot = await ref.child('Duas/Other').get();
     if (snapshot.exists) {
