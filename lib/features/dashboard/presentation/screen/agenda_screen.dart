@@ -62,8 +62,8 @@ class _AgendaScreenState extends State<AgendaScreen> {
         } else if (snapshot.hasData) {
           var originalResponse = snapshot.data as List<AgendaTask>;
           var response = List.of(originalResponse);
-          response.sort((a, b) => a.favourite.toString().compareTo(b.favourite.toString()));
-          response.sort((a, b) => b.done.toString().compareTo(a.done.toString()));
+          response.sort((a, b) => a.favourite ? 1 : -1);
+          response.sort((a, b) => b.done ? 1 : -1);
           response = List.from(response.reversed);
           return ListView.builder(
             itemCount: response.length,

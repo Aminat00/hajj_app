@@ -29,6 +29,29 @@ class UserService {
     return taskList;
   }
 
+  static Future<List<int>> fetchFavourite(String userId) async {
+    List<int> favouriteIndex = [];
+    final ref = FirebaseDatabase.instanceFor(
+            app: Firebase.app(),
+            databaseURL: 'https://tawaf-9d0c4-default-rtdb.europe-west1.firebasedatabase.app')
+        .ref();
+    final snapshot = await ref.child('user_data/$userId/favourite_duas').get();
+    if (snapshot.exists) {
+      final json = jsonEncode(snapshot.value);
+      final response = jsonDecode(json);
+      if (response is List) {
+        final json = response as List<dynamic?>;
+        json.forEach((element) {
+          if (element != null) favouriteIndex.add(element);
+        });
+      }
+    } else {
+      print('No data available.');
+    }
+
+    return favouriteIndex;
+  }
+
   static void removeTask(String userId, int index) async {
     final ref = FirebaseDatabase.instanceFor(
             app: Firebase.app(),
@@ -80,6 +103,47 @@ class UserService {
     updates['/user_data/$userId/agenda/$newIndex'] = postData;
 
     ref.update(updates);
+  }
+
+  static void addFavourite(String userId, int duaIndex) async {
+    final ref = FirebaseDatabase.instanceFor(
+            app: Firebase.app(),
+            databaseURL: 'https://tawaf-9d0c4-default-rtdb.europe-west1.firebasedatabase.app')
+        .ref()
+        .child('user_data/$userId/favourite_duas');
+
+    int? newIndex;
+    final snapshot = await ref.get();
+    if (snapshot.exists) {
+      final json = jsonEncode(snapshot.value);
+      final response = jsonDecode(json);
+      if (response is List) {
+        final json = response as List<Object?>;
+        newIndex = json.length;
+      }
+    }
+
+    newIndex ??= 0;
+
+    ref.update({'$newIndex': duaIndex});
+  }
+
+  static void removeFavourite(String userId, int index) async {
+    final ref = FirebaseDatabase.instanceFor(
+            app: Firebase.app(),
+            databaseURL: 'https://tawaf-9d0c4-default-rtdb.europe-west1.firebasedatabase.app')
+        .ref();
+
+    final snapshot = await ref.child('user_data/$userId/favourite_duas').get();
+    if (snapshot.exists) {
+      final json = jsonEncode(snapshot.value);
+      final response = jsonDecode(json);
+      if (response is List) {
+        final json = response;
+        json.removeWhere((element) => element == index);
+        ref.child('user_data/$userId/favourite_duas').set(json);
+      }
+    }
   }
 
   static void updateTask({
