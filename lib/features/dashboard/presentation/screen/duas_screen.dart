@@ -14,9 +14,15 @@ class DuasScreen extends StatefulWidget {
 }
 
 class _DuasScreenState extends State<DuasScreen> {
+  TextEditingController editingController = TextEditingController();
+
+  List<Dua> duplicateItems = [];
+  List<Dua> items = [];
+
   late Future<List<Dua>> _futureDuas;
   List<int>? _futureFavourites;
   bool didAddFav = false;
+  bool isFirstBuild = true;
 
   User? get _user => FirebaseAuth.instance.currentUser;
 
@@ -55,7 +61,12 @@ class _DuasScreenState extends State<DuasScreen> {
                   return Text("Error fetching duas : ${snapshot.error.toString()}");
                 } else if (snapshot.hasData) {
                   if (snapshot.data is List<Dua>) {
-                    return _duas(snapshot.data as List<Dua>);
+                    if (isFirstBuild) {
+                      duplicateItems = snapshot.data as List<Dua>;
+                      items.addAll(duplicateItems);
+                      isFirstBuild = false;
+                    }
+                    return _duas();
                   } else {
                     return const CircularProgressIndicator();
                   }
@@ -70,34 +81,39 @@ class _DuasScreenState extends State<DuasScreen> {
     );
   }
 
-  _duas(List<Dua> duas) {
+  _duas() {
     if (_futureFavourites != null && !didAddFav) {
-      for (var element in _futureFavourites!) {
-        duas[element].changeFavourite();
+      for (var duaIndex in _futureFavourites!) {
+        items[duaIndex].changeFavourite();
       }
       didAddFav = true;
     }
     int index = 0;
-    for (var element in duas) {
-      if (element.originalIndex == null) {
-        element.originalIndex = index;
+    for (var dua in items) {
+      if (dua.originalIndex == null) {
+        dua.originalIndex = index;
         index++;
       }
     }
-    duas.sort((a, b) => b.favourite ? 1 : -1);
+    items.sort((a, b) => b.favourite ? 1 : -1);
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: duas.length + 1,
+      itemCount: items.length + 1,
       itemBuilder: (context, index) => index == 0
           ? Padding(
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 tileColor: Colors.white,
                 trailing: const Icon(Icons.search_outlined),
-                title: const Text(
-                  'Search',
-                  style: TextStyle(color: Colors.grey),
+                title: TextField(
+                  controller: editingController,
+                  decoration: const InputDecoration(
+                    hintText: 'Search',
+                    hintStyle: TextStyle(color: Colors.grey),
+                    border: InputBorder.none,
+                  ),
+                  onChanged: filterSearchResults,
                 ),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
@@ -107,17 +123,17 @@ class _DuasScreenState extends State<DuasScreen> {
           : Padding(
               padding: const EdgeInsets.all(6.0),
               child: _duaTile(
-                duas[index - 1],
+                items[index - 1],
                 index,
                 () {
                   if (_user != null) {
-                    if (!duas[index - 1].favourite) {
-                      duas[index - 1].changeFavourite();
-                      UserService.addFavourite(_user!.uid, duas[index - 1].originalIndex!);
+                    if (!items[index - 1].favourite) {
+                      items[index - 1].changeFavourite();
+                      UserService.addFavourite(_user!.uid, items[index - 1].originalIndex!);
                       setState(() {});
                     } else {
-                      duas[index - 1].changeFavourite();
-                      UserService.removeFavourite(_user!.uid, duas[index - 1].originalIndex!);
+                      items[index - 1].changeFavourite();
+                      UserService.removeFavourite(_user!.uid, items[index - 1].originalIndex!);
                       setState(() {});
                     }
                   } else {
@@ -217,5 +233,28 @@ class _DuasScreenState extends State<DuasScreen> {
         ),
       ),
     );
+  }
+
+  void filterSearchResults(String query) {
+    List<Dua> dummySearchList = [];
+    dummySearchList.addAll(duplicateItems);
+    if (query.isNotEmpty) {
+      List<Dua> dummyListData = [];
+      dummySearchList.forEach((item) {
+        if (item.enName.toLowerCase().contains(query.toLowerCase())) {
+          dummyListData.add(item);
+        }
+      });
+      setState(() {
+        items.clear();
+        items.addAll(dummyListData);
+      });
+      return;
+    } else {
+      setState(() {
+        items.clear();
+        items.addAll(duplicateItems);
+      });
+    }
   }
 }
