@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:hajj_app/features/dashboard/presentation/screen/main_page.dart';
+import 'package:hajj_app/services/user_service.dart';
 
 import '../../../../reusable_widgets/reusable_widget.dart';
 import '../../../../utils/color_utils.dart';
@@ -72,6 +73,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           .then((value) {
                         FirebaseAuth.instance.currentUser
                             ?.updateDisplayName(_userTextController.text);
+                        UserService.createDir(userId: FirebaseAuth.instance.currentUser!.uid);
+                        Navigator.pop(context);
                         Navigator.pop(context);
                       }).onError((error, stackTrace) {
                         print("Error ${error.toString()}");

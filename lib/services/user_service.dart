@@ -74,7 +74,7 @@ class UserService {
       }
     }
 
-    if (newIndex == null) return;
+    newIndex ??= 0;
 
     final Map<String, Map> updates = {};
     updates['/user_data/$userId/agenda/$newIndex'] = postData;
@@ -103,5 +103,25 @@ class UserService {
         .ref();
 
     ref.update(updates);
+  }
+
+  static void createDir({required String userId}) {
+    final postData = {
+      userId: {
+        "agenda": "",
+        "favourite_duas": "",
+      }
+    };
+
+    // final Map<String, Map> updates = {};
+    // updates['/$userId'] = postData;
+
+    final ref = FirebaseDatabase.instanceFor(
+            app: Firebase.app(),
+            databaseURL: 'https://tawaf-9d0c4-default-rtdb.europe-west1.firebasedatabase.app')
+        .ref()
+        .child('user_data');
+
+    ref.update(postData);
   }
 }

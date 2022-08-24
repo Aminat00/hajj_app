@@ -36,20 +36,6 @@ class _DuasScreenState extends State<DuasScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: Colors.white,
-                trailing: const Icon(Icons.search_outlined),
-                title: const Text(
-                  'Search',
-                  style: TextStyle(color: Colors.grey),
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                ),
-              ),
-            ),
             FutureBuilder(
               future: _futureDuas,
               builder: (context, snapshot) {
@@ -76,11 +62,26 @@ class _DuasScreenState extends State<DuasScreen> {
     return ListView.builder(
       physics: const NeverScrollableScrollPhysics(),
       shrinkWrap: true,
-      itemCount: duas.length,
-      itemBuilder: (context, index) => Padding(
-        padding: const EdgeInsets.all(6.0),
-        child: _duaTile(duas[index], index),
-      ),
+      itemCount: duas.length + 1,
+      itemBuilder: (context, index) => index == 0
+          ? Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                tileColor: Colors.white,
+                trailing: const Icon(Icons.search_outlined),
+                title: const Text(
+                  'Search',
+                  style: TextStyle(color: Colors.grey),
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+              ),
+            )
+          : Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: _duaTile(duas[index - 1], index),
+            ),
     );
   }
 
