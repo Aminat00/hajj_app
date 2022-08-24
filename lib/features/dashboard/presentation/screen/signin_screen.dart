@@ -32,7 +32,7 @@ class _SignInScreenState extends State<SignInScreen> {
               gradient: LinearGradient(colors: [
             hexToColor('99d5d5'),
             hexToColor('4cb6b6'),
-            hexToColor('009797')
+            hexToColor('009797'),
           ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
           child: Center(
             child: SingleChildScrollView(
@@ -67,7 +67,6 @@ class _SignInScreenState extends State<SignInScreen> {
                       .then((value) {
                         Navigator.pop(context);
                       });
-
                     }),
                     signUpOption(),
                   ],
@@ -86,7 +85,7 @@ class _SignInScreenState extends State<SignInScreen> {
             style: TextStyle(color: Colors.white70)),
         GestureDetector(
             onTap: () {
-              Navigator.pushReplacement(
+              Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => const SignUpScreen(),
