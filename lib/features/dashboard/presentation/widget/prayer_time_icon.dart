@@ -20,7 +20,7 @@ class PrayerTimeIcon extends StatelessWidget {
       children: [
         Text(salahName,
             style:
-                Theme.of(context).textTheme.bodyText2?.apply(fontSizeFactor: closest ? 1.2 : 1.0)),
+                Theme.of(context).textTheme.subtitle2?.apply(fontSizeFactor: closest ? 1.2 : 1.0)),
         Icon(
           salahIcon,
           color: Colors.teal[closest ? 800 : 500],
@@ -28,7 +28,7 @@ class PrayerTimeIcon extends StatelessWidget {
         ),
         Text(salahTime,
             style:
-                Theme.of(context).textTheme.bodyText2?.apply(fontSizeFactor: closest ? 1.2 : 1.0)),
+                Theme.of(context).textTheme.subtitle2?.apply(fontSizeFactor: closest ? 1.2 : 1.0)),
       ],
     );
   }

@@ -50,7 +50,8 @@ class _PrayerTimesState extends State<PrayerTimes> {
       children: [
         Padding(
           padding: EdgeInsets.all(8.0),
-          child: Text('${hijriDate.day} ${latinize(hijriDate.month)} ${hijriDate.year}'),
+          child: Text('${hijriDate.day} ${latinize(hijriDate.month)} ${hijriDate.year}',
+            style: Theme.of(context).textTheme.headline6),
         ),
         Padding(
           padding: const EdgeInsets.all(10.0),

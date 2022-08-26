@@ -1,6 +1,7 @@
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hajj_app/features/dashboard/presentation/other/maps_sheet.dart';
 import 'package:hajj_app/models/place_description.dart';
 import 'package:hajj_app/services/places_service.dart';
@@ -46,7 +47,7 @@ class _PlaceWidgetState extends State<PlaceWidget> {
                 child: Row(
                   children: [
                     const Icon(Icons.star),
-                    Text(place.rating.toString()),
+                    Text(place.rating.toString(), style: Theme.of(context).textTheme.subtitle2,),
                   ],
                 ),
               ),
@@ -56,6 +57,7 @@ class _PlaceWidgetState extends State<PlaceWidget> {
                 place.openingHours?[DateTime.now().weekday - 1] ??
                     'No information about opening hours',
                 textAlign: TextAlign.start,
+                  style: Theme.of(context).textTheme.subtitle2,
               ),
             ),
             _buttonRow(),
@@ -107,7 +109,7 @@ class _PlaceWidgetState extends State<PlaceWidget> {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             place.name,
-            style: Theme.of(context).textTheme.headline1,
+            style: Theme.of(context).textTheme.headline2,
             textAlign: TextAlign.center,
           ),
         ),
@@ -136,9 +138,10 @@ class _PlaceWidgetState extends State<PlaceWidget> {
                 );
               },
               icon: const Icon(Icons.directions),
-              label: const Text(
+              label:  Text(
                 'Directions',
                 textScaleFactor: 1.2,
+                style: GoogleFonts.getFont('Righteous'),
               )),
           OutlinedButton.icon(
             style: ButtonStyle(foregroundColor: MaterialStateProperty.all(Colors.teal)),
@@ -155,9 +158,10 @@ class _PlaceWidgetState extends State<PlaceWidget> {
               );
             },
             icon: const Icon(Icons.near_me),
-            label: const Text(
+            label:  Text(
               'Show on map',
               textScaleFactor: 1.2,
+              style: GoogleFonts.getFont('Righteous'),
             ),
           )
         ],

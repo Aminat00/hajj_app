@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hajj_app/features/dashboard/presentation/widget/place_widget.dart';
+import 'package:hajj_app/hajj_app_theme.dart';
 import 'package:hajj_app/models/place_description.dart';
 import 'package:hajj_app/services/places_service.dart';
 
@@ -58,7 +60,7 @@ class _PlacesScreenState extends State<PlacesScreen> with SingleTickerProviderSt
                         const SizedBox(
                           width: 4,
                         ),
-                        Text(entry.value),
+                        Text(entry.value,style: GoogleFonts.getFont('Righteous'),),
                       ],
                     ),
                   ),

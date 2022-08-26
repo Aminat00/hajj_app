@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class TaskSheet {
   static show(BuildContext context, Function(String, String) onTap) {
-    final GlobalKey<FormState> _formState = GlobalKey();
+    final GlobalKey<FormState> formState = GlobalKey();
     final GlobalKey<FormFieldState<String>> _headerKey = GlobalKey();
     final GlobalKey<FormFieldState<String>> _bodyKey = GlobalKey();
 
     void validate() {
-      if (_formState.currentState!.validate()) {
+      if (formState.currentState!.validate()) {
         onTap.call(_headerKey.currentState!.value!, _bodyKey.currentState!.value!);
       }
     }
@@ -21,7 +21,7 @@ class TaskSheet {
           child: Wrap(
             children: [
               Form(
-                key: _formState,
+                key: formState,
                 child: Column(
                   children: <Widget>[
                     const ListTile(

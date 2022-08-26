@@ -35,9 +35,14 @@ class HajjAppTheme {
       color: Colors.teal,
     ),
     bodyText2: GoogleFonts.righteous(
-      fontSize: 14,
+      fontSize: 16,
       color: Colors.black45,
       fontWeight: FontWeight.w300,
+    ),
+    subtitle2: GoogleFonts.righteous(
+      fontSize: 16,
+      color: Colors.teal,
+      fontWeight: FontWeight.w500,
     ),
   );
 
