@@ -60,7 +60,7 @@ class _UmrahScreenState extends State<UmrahScreen> {
                         onTap: () => Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
                               return UmrahScreen2(
-                                  umrah: list.prepare, category: '1.Prepare');
+                                  umrah: list.prepare, category: 'Prepare');
                             }))),
                     Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -74,7 +74,7 @@ class _UmrahScreenState extends State<UmrahScreen> {
                         onTap: () => Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
                               return UmrahScreen2(
-                                  umrah: list.ihram, category: '2.Ihram');
+                                  umrah: list.ihram, category: 'Ihram');
                             }))),
                     Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -89,7 +89,7 @@ class _UmrahScreenState extends State<UmrahScreen> {
                                 MaterialPageRoute(builder: (context) {
                               return UmrahScreen2(
                                   umrah: list.tawafAlUmrah,
-                                  category: '3.Tawah al Umrah');
+                                  category: 'Tawah_al_Umrah');
                             }))),
                     Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -103,7 +103,7 @@ class _UmrahScreenState extends State<UmrahScreen> {
                         onTap: () => Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
                               return UmrahScreen2(
-                                  umrah: list.sai, category: '4.Sa\'i');
+                                  umrah: list.sai, category: 'Sa\'i');
                             }))),
                     Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -118,7 +118,7 @@ class _UmrahScreenState extends State<UmrahScreen> {
                                 MaterialPageRoute(builder: (context) {
                               return UmrahScreen2(
                                   umrah: list.halqOrTaqsir,
-                                  category: '5.Halq or Taqsir');
+                                  category: 'Halq or Taqsir');
                             }))),
                     Padding(
                         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
@@ -132,7 +132,7 @@ class _UmrahScreenState extends State<UmrahScreen> {
                         onTap: () => Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
                               return UmrahScreen2(
-                                  umrah: list.mabrook, category: '6.Mabrook!');
+                                  umrah: list.mabrook, category: 'Mabrook!');
                             }))),
                     const SizedBox(
                       height: 10,
