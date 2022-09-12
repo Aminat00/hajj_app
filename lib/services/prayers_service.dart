@@ -22,7 +22,6 @@ class PrayersService {
     }
   }
 }
-
 class Pair {
   final Object item1;
   final Object item2;

@@ -13,35 +13,31 @@ class MainServices extends StatefulWidget {
 class _MainServicesState extends State<MainServices> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-
-        children: [
-
-           ServiceCard(
-            imageWidth: double.infinity,
-            imageHeight: 95,
-            nameImage: 'hajj.webp',
-            nameEng: 'Umrah',
-            onTap:() => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const UmrahScreen(),
-              ),
-            ), 
+    return Column(children: [
+      ServiceCard(
+        imageWidth: double.infinity,
+        imageHeight: 95,
+        nameImage: 'hajj.webp',
+        nameEng: 'Umrah',
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const UmrahScreen(),
           ),
-          ServiceCard(
-            imageWidth: double.infinity,
-            imageHeight: 95,
-            nameImage: 'dua.jpg',
-            nameEng: 'Duas',
-            onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const DuasScreen(),
-              ),
-            ),
+        ),
+      ),
+      ServiceCard(
+        imageWidth: double.infinity,
+        imageHeight: 95,
+        nameImage: 'dua.jpg',
+        nameEng: 'Duas',
+        onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const DuasScreen(),
           ),
-    ]
-      );
+        ),
+      ),
+    ]);
   }
 }

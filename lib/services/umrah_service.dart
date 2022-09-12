@@ -22,7 +22,6 @@ class UmrahService{
      else {
       print('No data available');
     }
-     print('got data');
     return list;
   }
 }

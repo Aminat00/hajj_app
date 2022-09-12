@@ -36,7 +36,7 @@ class ServiceCard extends StatelessWidget {
             child: ColorFiltered(
               colorFilter: const ColorFilter.mode(
                 Colors.black38,
-                BlendMode.colorBurn,
+                BlendMode.darken,
               ),
               child: Image.asset(
                 imageAddress + nameImage,

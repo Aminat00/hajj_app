@@ -17,7 +17,7 @@ class _HomeState extends State<Home> {
       child: Container(
         child: Column(
 
-            children:  [
+            children:  const [
           CarouselSliderHajj(),
           PrayerTimes(),
           Padding(

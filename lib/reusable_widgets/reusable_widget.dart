@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 Image logoWidget(String imageName){
   return Image.asset(
@@ -16,7 +17,11 @@ Image logoWidget(String imageName){
      enableSuggestions: !isPasswordType,
      autocorrect: isPasswordType,
      cursorColor: Colors.white,
-     style: TextStyle(color: Colors.white.withOpacity(0.9)),
+     style: GoogleFonts.righteous(
+       fontSize: 16,
+       color: Colors.white.withOpacity(0.9),
+       fontWeight: FontWeight.w300,
+     ),
      decoration: InputDecoration(prefixIcon: Icon(icon, color: Colors.white70,),
      labelText: text,
      labelStyle: TextStyle(color:Colors.white.withOpacity(0.9)),
@@ -52,8 +57,10 @@ BuildContext context, bool isLogin, Function onTap){
            RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)))),
        child: Text(
          isLogin ? 'LOG IN' : 'SIGN UP',
-         style: const TextStyle(
-           color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 16
+         style:  GoogleFonts.righteous(
+           fontSize: 16,
+           color: Colors.black87.withOpacity(0.9),
+           fontWeight: FontWeight.w300,
          ),),
      ),
    );

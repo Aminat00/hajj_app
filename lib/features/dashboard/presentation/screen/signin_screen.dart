@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hajj_app/features/dashboard/presentation/screen/main_page.dart';
+import 'package:hajj_app/features/dashboard/presentation/screen/main_screen.dart';
 import 'package:hajj_app/features/dashboard/presentation/screen/signup_screen.dart';
 
 import '../../../../reusable_widgets/reusable_widget.dart';
@@ -42,10 +42,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 child: Column(
                   children: [
                     Image.asset(
-                      'assets/images/kaaba.png',
+                      'assets/images/img_1.png',
                       fit: BoxFit.cover,
-                      width: 240,
-                      height: 240,
+                      width: 300,
+                      height: 350,
                     ),
                     const SizedBox(
                       height: 30,

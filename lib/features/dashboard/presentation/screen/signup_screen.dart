@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:hajj_app/features/dashboard/presentation/screen/main_page.dart';
+import 'package:hajj_app/features/dashboard/presentation/screen/main_screen.dart';
 import 'package:hajj_app/services/user_service.dart';
 
 import '../../../../reusable_widgets/reusable_widget.dart';
@@ -25,11 +25,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: const Text('Sign Up Page',
-            style: TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            )),
+        centerTitle: true,
+        title:  Text('Sign Up Page',
+            style: Theme
+            .of(context)
+            .textTheme
+            .headline2,
+            ),
       ),
       body: Container(
           width: MediaQuery.of(context).size.width,
@@ -47,6 +49,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     15, MediaQuery.of(context).size.height * 0.1, 15, 0),
                 child: Column(
                   children: [
+                    Image.asset(
+                      'assets/images/img_1.png',
+                      fit: BoxFit.cover,
+                      width: 300,
+                      height: 350,
+                    ),
                     const SizedBox(
                       height: 20,
                     ),
@@ -55,13 +63,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     const SizedBox(
                       height: 20,
                     ),
-                    reusableTextField("Enter EmailId", Icons.person_outline,
+                    reusableTextField("Enter Email ID", Icons.mail_outline,
                         false, _emailTextController),
                     const SizedBox(
                       height: 20,
                     ),
-                    reusableTextField("Enter Password", Icons.lock_outline, true,
-                        _passwordTextController),
+                    reusableTextField("Enter Password", Icons.lock_outline,
+                        true, _passwordTextController),
                     const SizedBox(
                       height: 20,
                     ),
@@ -73,7 +81,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           .then((value) {
                         FirebaseAuth.instance.currentUser
                             ?.updateDisplayName(_userTextController.text);
-                        UserService.createDir(userId: FirebaseAuth.instance.currentUser!.uid);
+                        UserService.createDir(
+                            userId: FirebaseAuth.instance.currentUser!.uid);
                         Navigator.pop(context);
                         Navigator.pop(context);
                       }).onError((error, stackTrace) {

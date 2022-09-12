@@ -7,7 +7,7 @@ import 'package:hajj_app/features/dashboard/presentation/screen/signin_screen.da
 import 'package:hajj_app/models/agenda_task.dart';
 import 'package:hajj_app/services/user_service.dart';
 
-import 'home.dart';
+import 'home_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
@@ -113,6 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Padding(
         padding: const EdgeInsets.fromLTRB(30, 60, 30, 20),
         child: Column(
+
           crossAxisAlignment: CrossAxisAlignment.center,
           children: _drawerContent(context),
         ),

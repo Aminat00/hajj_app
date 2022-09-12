@@ -1,7 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-
 part 'prayers.g.dart';
-
 @JsonSerializable()
 class Prayers {
   final DateTime Fajr;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hajj_app/features/dashboard/presentation/screen/duas_screen.dart';
 import 'package:hajj_app/features/dashboard/presentation/screen/signin_screen.dart';
 import 'package:hajj_app/hajj_app_theme.dart';
-import '../features/dashboard/presentation/screen/main_page.dart';
+import '../features/dashboard/presentation/screen/main_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'dart:async';

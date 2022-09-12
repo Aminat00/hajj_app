@@ -6,6 +6,7 @@ import 'package:hajj_app/reusable_widgets/umrah_card.dart';
 import 'package:hajj_app/services/umrah_service.dart';
 
 import '../../../../models/umrah.dart';
+import '../widget/service_card.dart';
 
 class UmrahScreen extends StatefulWidget {
   const UmrahScreen({Key? key}) : super(key: key);
@@ -22,7 +23,6 @@ class _UmrahScreenState extends State<UmrahScreen> {
     _futureUmrah = UmrahService.fetchUmrah();
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,29 +37,106 @@ class _UmrahScreenState extends State<UmrahScreen> {
         ),
       ),
       body: FutureBuilder(
-        future: _futureUmrah,
+          future: _futureUmrah,
         builder: (context, snapshot) {
           if (snapshot.hasError) {
-            return Text("Error fetching umrah processes: ${snapshot.error.toString()}");
+            return Text(
+                "Error fetching umrah processes: ${snapshot.error.toString()}");
           } else if (snapshot.hasData) {
             if (snapshot.data is UmrahList) {
               final UmrahList list = snapshot.data as UmrahList;
               return SingleChildScrollView(
                 child: Column(
                   children: [
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) {
-                            return UmrahScreen2(umrah: list.prepare, category: 'Prepare');
-                          }));
-                        },
-                        child: Text('Prepare')),
-                    // _umrah(list.prepare, 'Prepare'),
-                    // _umrah(list.ihram, 'Ihram'),
-                    // _umrah(list.tawafAlUmrah, 'Tawah al Umrah'),
-                    // _umrah(list.sai, 'Sa\'i'),
-                    // _umrah(list.halqOrTaqsir, 'Halq or Taqsir'),
-                    // _umrah(list.mabrook, 'Mabrook!'),
+                    Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: Text('1.Prepare',
+                            style: Theme.of(context).textTheme.headline5)),
+                    ServiceCard(
+                        imageWidth: double.infinity,
+                        imageHeight: 250,
+                        nameImage: 'prepare.jpg',
+                        nameEng: 'Click to know more',
+                        onTap: () => Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return UmrahScreen2(
+                                  umrah: list.prepare, category: '1.Prepare');
+                            }))),
+                    Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: Text('2.Ihram',
+                            style: Theme.of(context).textTheme.headline5)),
+                    ServiceCard(
+                        imageWidth: double.infinity,
+                        imageHeight: 250,
+                        nameImage: 'ihram.webp',
+                        nameEng: 'Click to know more',
+                        onTap: () => Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return UmrahScreen2(
+                                  umrah: list.ihram, category: '2.Ihram');
+                            }))),
+                    Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: Text('3.Tawah al-Umrah',
+                            style: Theme.of(context).textTheme.headline5)),
+                    ServiceCard(
+                        imageWidth: double.infinity,
+                        imageHeight: 250,
+                        nameImage: 'tawaf.jpg',
+                        nameEng: 'Click to know more',
+                        onTap: () => Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return UmrahScreen2(
+                                  umrah: list.tawafAlUmrah,
+                                  category: '3.Tawah al Umrah');
+                            }))),
+                    Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: Text('4.Sa\'i',
+                            style: Theme.of(context).textTheme.headline5)),
+                    ServiceCard(
+                        imageWidth: double.infinity,
+                        imageHeight: 250,
+                        nameImage: 'sai.jpg',
+                        nameEng: 'Click to know more',
+                        onTap: () => Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return UmrahScreen2(
+                                  umrah: list.sai, category: '4.Sa\'i');
+                            }))),
+                    Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: Text('5.Halq and Taqsir',
+                            style: Theme.of(context).textTheme.headline5)),
+                    ServiceCard(
+                        imageWidth: double.infinity,
+                        imageHeight: 250,
+                        nameImage: 'halq.webp',
+                        nameEng: 'Click to know more',
+                        onTap: () => Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return UmrahScreen2(
+                                  umrah: list.halqOrTaqsir,
+                                  category: '5.Halq or Taqsir');
+                            }))),
+                    Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+                        child: Text('6.Mabrook!',
+                            style: Theme.of(context).textTheme.headline5)),
+                    ServiceCard(
+                        imageWidth: double.infinity,
+                        imageHeight: 250,
+                        nameImage: 'mabrook.jpg',
+                        nameEng: '',
+                        onTap: () => Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return UmrahScreen2(
+                                  umrah: list.mabrook, category: '6.Mabrook!');
+                            }))),
+                    const SizedBox(
+                      height: 10,
+                    )
                   ],
                 ),
               );
@@ -76,20 +153,25 @@ class _UmrahScreenState extends State<UmrahScreen> {
 }
 
 class UmrahScreen2 extends StatelessWidget {
-  const UmrahScreen2({Key? key, required this.umrah, required this.category}) : super(key: key);
+  const UmrahScreen2({Key? key, required this.umrah, required this.category})
+      : super(key: key);
 
   final List<Umrah> umrah;
   final String category;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color.fromRGBO(243, 237, 229, 1),
       appBar: AppBar(
-        title: Text(category),
+        title: Text(
+          category,
+          style: TextStyle(color: Colors.teal),
+        ),
+        centerTitle: true,
+        elevation: 0,
+        backgroundColor: Colors.transparent,
       ),
       body: CustomScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        shrinkWrap: true,
         slivers: [
           SliverToBoxAdapter(
             child: Align(
@@ -100,6 +182,7 @@ class UmrahScreen2 extends StatelessWidget {
               ),
             ),
           ),
+
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
@@ -121,7 +204,9 @@ class UmrahScreen2 extends StatelessWidget {
     if (umrah.card_title != null && umrah.card_text != null) {
       return InkWell(
           onTap: () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => UmrahStepsCard(umrah: umrah))),
+              context,
+              MaterialPageRoute(
+                  builder: (context) => UmrahStepsCard(umrah: umrah))),
           child: umrahCard(umrah.card_title, umrah.card_text, umrah.card_img));
     }
   }
@@ -130,7 +215,9 @@ class UmrahScreen2 extends StatelessWidget {
     if (umrah.list_tile_text != null) {
       return InkWell(
           onTap: () => Navigator.push(
-              context, MaterialPageRoute(builder: (context) => UmrahStepsTile(umrah: umrah))),
+              context,
+              MaterialPageRoute(
+                  builder: (context) => UmrahStepsTile(umrah: umrah))),
           child: Card(
             color: Colors.white,
             elevation: 7.0,
